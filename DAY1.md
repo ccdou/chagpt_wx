@@ -79,6 +79,8 @@ if __name__ == '__main__':
 
 
 OK，那我们就按照它的思路开整，对Python比较熟，那我肯定优先选flask框架。
+
+
 0、配置一个虚拟环境
 
 ```bash
@@ -90,6 +92,7 @@ source venv/bin/activate
 
 ```
 
+
 1、安装 Flask：
 
 首先，确保你的服务器上已经安装了 Python。然后可以使用 pip（Python 包管理器）来安装 Flask。运行以下命令：
@@ -98,9 +101,12 @@ source venv/bin/activate
  pip install Flask 
 ```
 
+
  2、创建 Flask 应用：
 
 创建一个新的目录，并在该目录中创建一个 Python 文件，例如 app.py。在 app.py 文件中编写 Flask 应用的代码。
+
+
 
 3、编写 Flask 应用：
 
@@ -114,6 +120,8 @@ source venv/bin/activate
 接下来直接上相关的代码了，用到了openai，flask相关的库，注意一定要保证openai是比较新的版本0.27以上，不然会出现问题
 
 此代码会接受用户的输入，并将该信息输出到api中，接受api的返回，输出回前端
+
+
 
 ```python
 import openai
