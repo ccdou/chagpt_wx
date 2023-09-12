@@ -1,0 +1,5 @@
+<!-- welcome.wxml -->
+<view class="welcome-container">
+  <text class="welcome-text">Welcome</text>
+  <button class="start-button" bindtap="startExperience">开始体验</button>
+</view>

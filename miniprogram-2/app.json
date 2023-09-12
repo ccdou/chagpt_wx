@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/Welcome/welcome",  
+    "pages/index/index"     
+  ],
+  "window": {
+    "navigationBarTitleText": "微信小程序示例",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#007bff",
+    "navigationBarTextStyle": "white"
+  }
+}

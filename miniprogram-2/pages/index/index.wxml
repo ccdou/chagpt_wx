@@ -1,0 +1,20 @@
+<!-- index.wxml -->
+<view class="container">
+  <!-- 在 container 中增加一个空白区域 -->
+  <view class="spacer"></view>
+  
+  <scroll-view class="scroll-view-container" scroll-y="true">
+    <view class="chat-box" wx:for="{{ messages }}" wx:key="{{ index }}">
+      <view class="message {{ item.role }}">
+        {{ item.content }}
+      </view>
+    </view>
+  </scroll-view>
+  <view class="input-and-button">
+    <view class="custom-input-container">
+      <input class="custom-input" placeholder="请输入内容" bindinput="onInput" value="{{userInput}}" />
+
+    </view>
+    <button class="send-button" bindtap="sendRequest">发送请求</button>
+  </view>
+</view>
