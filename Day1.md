@@ -122,7 +122,73 @@ source venv/bin/activate
 会接受用户的输入，并将该信息输出到api中，接受api的返回，输出回前端
 
 
+```python
 
+
+import openai
+
+from flask import Flask, request, jsonify
+
+
+
+app = Flask(__name__)
+
+
+# 设置 ChatGPT API 相关信息
+
+openai.api_base = ''
+
+openai.api_key = ''  # 请替换为你的有效 API 密钥
+
+
+
+
+@app.route('/ask', methods=['POST'])
+
+def ask_question():
+
+    try:
+
+        user_input = request.json['user_input']
+
+        print('input: {}'.format(user_input))
+
+        response = openai.ChatCompletion.create(
+
+            model="gpt-3.5-turbo",
+
+            messages=[
+
+                {"role": "system", "content": "You are a chatbot"},
+
+                {"role": "user", "content": user_input}
+
+            ]
+
+        )
+
+        print('response : {}'.format(response))
+
+        chat_response = response['choices'][0]['message']['content']
+
+        return jsonify({"response": chat_response})
+
+
+
+    except Exception as e:
+
+        return jsonify({"error": str(e)}), 500
+
+
+
+if __name__ == '__main__':
+
+    app.run(host='0.0.0.0', port=3000)
+
+
+
+"chat.py" 32L, 1038B                                                                                                                                                    32,0-1        All
+```
 
 
 ***第一天任务圆满结束，用时一个白天（搜索相关的信息，确定实际需要什么）+ 一个晚上（准备工作+后端代码），大家都完成了吗（笑）***
