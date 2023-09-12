@@ -117,64 +117,11 @@ source venv/bin/activate
 开始前先确认下我们的云服务器的ip是啥，在阿里云服务器网站中打开控制面板、我们的实例，可以看到公网ip:XXXXX，这就是我们后续要用到的ip地址
 
 
-接下来直接上相关的代码了，用到了openai，flask相关的库，注意一定要保证openai是比较新的版本0.27以上，不然会出现问题
+后端代码用到了openai，flask相关的库，注意一定要保证openai是比较新的版本0.27以上，不然会出现问题
 
-此代码会接受用户的输入，并将该信息输出到api中，接受api的返回，输出回前端
-
-
-
-```python
-import openai
-from flask import Flask, request, jsonify
-app = Flask(__name__)
-print('start')
-# 设置 ChatGPT API 相关信息
-openai.api_base = ''
-openai.api_key = ''  # 请替换为你的有效 API 密钥
-@app.route('/ask', methods=['POST'])
-
-def ask_question():
-
-    try:
-
-        user_input = request.json['user_input']
-
-        print('input: {}'.format(user_input))
-
-        response = openai.ChatCompletion.create(
-
-            model="gpt-3.5-turbo",
-
-            messages=[
-
-                {"role": "system", "content": "You are a chatbot"},
-
-                {"role": "user", "content": user_input}
-
-            ]
-
-        )
-
-        print('response : {}'.format(response))
-
-        chat_response = response['choices'][0]['message']['content']
-
-        return jsonify({"response": chat_response})
+会接受用户的输入，并将该信息输出到api中，接受api的返回，输出回前端
 
 
-
-    except Exception as e:
-
-        return jsonify({"error": str(e)}), 500
-
-
-
-if __name__ == '__main__':
-
-    app.run(host='0.0.0.0', port=3000)
-
-                                                                                                                                            
-```
 
 
 
